@@ -73,6 +73,9 @@ def main():
     args = parser.parse_args()
     enc = encoder.get_encoder(args.model_name)
     hparams = model.default_hparams()
+    gdrive_path = "/content/drive/My\ Drive/checkpoint"
+    if(os.path.exists(gdrive_path)):
+        CHECKPOINT_DIR = os.path.join(gdrive_path, CHECKPOINT_DIR)
     with open(os.path.join('models', args.model_name, 'hparams.json')) as f:
         hparams.override_from_dict(json.load(f))
 
